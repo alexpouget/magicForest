@@ -15,6 +15,9 @@ public class Hero {
     private int knowledge[][];
     private Boolean visited[][];
     private static Hero hero;
+    private int life;
+    private int shootUsed;
+    private int point;
 
     public static Hero getInstance(){
         if(hero==null){
@@ -24,9 +27,12 @@ public class Hero {
     }
 
     private Hero() {
-            this.posY = 0;
-            this.posX = 0;
-            resetKnowledge(1);
+        life = 0;
+        shootUsed = 0;
+        point =0;
+        this.posY = 0;
+        this.posX = 0;
+        resetKnowledge(1);
 
     }
 
@@ -84,6 +90,30 @@ public class Hero {
 
     public void setVisited(Boolean[][] visited) {
         this.visited = visited;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+    public int getShootUsed() {
+        return shootUsed;
+    }
+
+    public void setShootUsed(int shootUsed) {
+        this.shootUsed = shootUsed;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
     }
 
     public void move(String dir){

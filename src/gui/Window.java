@@ -1,5 +1,6 @@
 package gui;
 
+import entity.Hero;
 import ia.Agent;
 import utils.Constants;
 
@@ -15,6 +16,7 @@ public class Window extends JFrame {
 
     private static Window window;
     private JPanel forest;
+    private JLabel storyField;
 
     public static Window getInstance(){
         if(window == null){
@@ -55,7 +57,10 @@ public class Window extends JFrame {
         });
         storyBoard.add(newLevel,BorderLayout.WEST);
         //Story label
-        JLabel storyField = new JLabel("bienvenue dans la fôret !!!");
+        storyField = new JLabel("bienvenue dans la fôret !!! vous avez utilisé : "
+                + Hero.getInstance().getLife() + " vie , "
+                + Hero.getInstance().getShootUsed() + " tir , et gagné "
+                + Hero.getInstance().getPoint() + " point");
         storyBoard.add(storyField);
 
         container.add(storyBoard,BorderLayout.SOUTH);
@@ -63,6 +68,15 @@ public class Window extends JFrame {
         setVisible(true);
     }
 
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        storyField.setText("bienvenue dans la fôret !!! vous avez utilisé : "
+                + Hero.getInstance().getLife() + " vie , "
+                + Hero.getInstance().getShootUsed() + " tir , et gagné "
+                + Hero.getInstance().getPoint() + " point");
+
+    }
 
     public void newForest() {
         Container c = this.getContentPane() ;

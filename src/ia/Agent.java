@@ -142,20 +142,23 @@ public class Agent{
         //reset diravailable
         instanciateMapDir();
         hero.move(dir);
-
+        hero.setPoint(hero.getPoint()-1);
     }
 
     public void levelUp(){
+        hero.setPoint(hero.getPoint()+10);
         level ++;
         hero.setPosX(0);
         hero.setPosY(0);
         hero.resetKnowledge(level);
         newLevel();
         Window.getInstance().newForest();
+        Window.getInstance().repaint();
     }
 
     public void death(){
         System.out.println("death");
+        hero.setLife(hero.getLife()+1);
         hero.setPosX(0);
         hero.setPosY(0);
     }
@@ -176,6 +179,7 @@ public class Agent{
                 monsterVariable[hero.getPosX()+1][hero.getPosY()] = false;
                 break;
         }
+        hero.setShootUsed(hero.getShootUsed()+1);
     }
 
     public void addKnow(){
