@@ -146,7 +146,7 @@ public class Agent{
     }
 
     public void levelUp(){
-        hero.setPoint(hero.getPoint()+10);
+        hero.setPoint(hero.getPoint()+(10*(level+2)));
         level ++;
         hero.setPosX(0);
         hero.setPosY(0);
@@ -158,6 +158,7 @@ public class Agent{
 
     public void death(){
         System.out.println("death");
+        hero.setPoint(hero.getPoint()-(10*(level+2)));
         hero.setLife(hero.getLife()+1);
         hero.setPosX(0);
         hero.setPosY(0);
@@ -179,6 +180,7 @@ public class Agent{
                 monsterVariable[hero.getPosX()+1][hero.getPosY()] = false;
                 break;
         }
+        hero.setPoint(hero.getPoint()-10);
         hero.setShootUsed(hero.getShootUsed()+1);
     }
 
